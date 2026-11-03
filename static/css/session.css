@@ -1,0 +1,52 @@
+.panel-morado {
+    background: linear-gradient(135deg, #2e0b3e 0%, #4b0082 100%);
+    border-right: 5px solid #6a0dad;
+}
+
+.bg-gris-claro {
+    background-color: #f4f6f9;
+}
+
+.tarjeta-blanca {
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.input-clasico {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.input-clasico:focus {
+    border-color: #4b0082;
+    box-shadow: 0 0 0 0.2rem rgba(75, 0, 130, 0.25);
+    background-color: #ffffff;
+}
+
+.btn-gris-sombra {
+    background-color: #6c757d;
+    color: white;
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-gris-sombra:hover {
+    background-color: #5a6268;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.text-primary {
+    color: #4b0082 !important;
+}
+
+.text-primary:hover {
+    color: #2e0b3e !important;
+    text-decoration: underline !important;
+}

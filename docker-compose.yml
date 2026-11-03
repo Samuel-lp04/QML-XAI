@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: tfgMysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE:      ${MYSQL_DATABASE}
+      MYSQL_USER:          ${MYSQL_USER}
+      MYSQL_PASSWORD:      ${MYSQL_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - datosMysql:/var/lib/mysql
+      - ./tfg.sql:/docker-entrypoint-initdb.d/tfg.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  web:
+    build: .
+    container_name: tfgWeb
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_HOST: db
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  datosMysql:
